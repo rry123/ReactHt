@@ -1,0 +1,3 @@
+postgresql://rajy25122:************@ep-morning-art-a1du6u5e.ap-southeast-1.aws.neon.tech/firstdb?sslmode=require
+
+Mongodb
