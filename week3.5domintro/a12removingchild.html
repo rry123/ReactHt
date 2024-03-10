@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Document Object</h1>
+    <h2>The removeChild() Method</h2>
+
+    <div id = "div1">
+        <p id = "p1">This is a paragraph</p>
+        <p id = "p2">This is another paragraph</p>
+    </div>
+    <p>Click the "Remove Button to remove the childs of div</p>
+    <button onclick="myFunction">Remove</button>
+
+    <script>
+        function myFunction(){
+            const parent = document.getElementById("div1");
+            const child = docume.getElementById("p1");
+            parent.removeChild(child);
+        }
+    </script>
+</body>
+</html>

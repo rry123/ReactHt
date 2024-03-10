@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .democlass{
+            color: red;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "myH1">The Element Object</h1>
+    <h2>The setAttribute() method</h2>
+
+    <input id = "myInput" value="OK">
+
+    <p>Click "Change" to change the input field to an input button.</p>
+
+    <button onclick="myFunction()">Change</button>
+    <script>
+        function myFunction(){
+            document.getElementById("myInput").setAttribute("type", "button");
+        }
+    </script>
+</body>
+</html>

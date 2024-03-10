@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="frm1" action="action_page.php">
+      First name : <input type="text" name="fname" value="Ritik" /> <br />
+      Last name : <input type="text" name="lname" value="Raj" /> <br />
+      <intput type="submit" value="Submit"></intput>
+    </form>
+    <p>
+      These are the values of each element in the form :
+    </p>
+    <button onclick="myFunction()">Try It</button>
+    <p id="demo"></p>
+
+    <script>
+      const x = document.forms["frm1"];
+      let text = "";
+      for(let i=0; i<x.length; i++){
+        text+= x.elements[i].value +"<br>"
+      }
+      document.getElementById("demo").innerHTML = text;
+    </script>
+  </body>
+</html>
