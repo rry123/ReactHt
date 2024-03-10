@@ -23,3 +23,12 @@ app.get("/user", function(req, res){
 app.post("/user", function(req, res){
     res.json("Created a dummy user successfully");
 })
+
+app.get("/reqcount", function(req, res){
+    res.json({
+        requestCount
+    })
+})
+
+
+app.listen(3000);
