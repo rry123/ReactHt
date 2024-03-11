@@ -1,0 +1,54 @@
+<!--Given principal amount rate and time hit the backend server-->
+
+<!--Now lets say you don't have access to the calculation logic on the frontend
+You need to hit the backend server and get back the value  
+https://sum-server.100xdevs.com/sum?a=1&b=2-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function populateDiv(){
+        const a = document.getElementById("firstnumber").value;
+        const b = document.getElementById("secondnumber").value;
+
+        const element = document.getElementById("finalsum");
+       // element.innerHTML = parseInt(a) + parseInt(b);
+
+       // using fetch function
+       fetch("https://sum-server.100xdevs.com/sum?a=" +a +"&b="+b)
+        .then(function(response){
+            console.log(response);
+            response.text()
+            .then(function(ans){
+                console.log(ans);
+                element.innerHTML = ans;
+            })
+        });
+    }
+
+    // cleaner way to do it using async await
+    async function populateDiv2(){
+         const principal = document.getElementById("Principal").value;
+         const rate = document.getElementById("Rate").value;
+         const time = document.getElementById("Time").value;
+
+         const response = await fetch("https://sum-server.100xdevs.com/sum?principal=" +principal +"&rate="+rate +"&time=" + time);
+         const ans = await response.text();
+
+         const element = document.getElementById("final");
+         element.innerHTML = ans;
+    }
+</script>
+<body>
+    <input id = "Principal" type = "text" placeholder="Principal Amount"> <br> <br>
+    <input  id = "Rate" type = "text" placeholder="Interest"> <br> <br>
+    <input  id = "Time" type = "text" placeholder="Duration"> <br> <br>
+    <button onclick="populateDiv2()">CalculateSum</button>
+    <div id = "final"></div>
+</body>
+</html>

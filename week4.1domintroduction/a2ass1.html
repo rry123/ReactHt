@@ -1,0 +1,57 @@
+<!--Now lets say you don't have access to the calculation logic on the frontend
+You need to hit the backend server and get back the value  
+https://sum-server.100xdevs.com/sum?a=1&b=2-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function populateDiv(){
+        const a = document.getElementById("firstnumber").value;
+        const b = document.getElementById("secondnumber").value;
+
+        const element = document.getElementById("finalsum");
+       // element.innerHTML = parseInt(a) + parseInt(b);
+
+       // using fetch function
+       fetch("https://sum-server.100xdevs.com/sum?a=" +a +"&b="+b)
+        .then(function(response){
+            console.log(response);
+            response.text()
+            .then(function(ans){
+                console.log(ans);
+                element.innerHTML = ans;
+            })
+        });
+    }
+    let timeout;
+    function debouncePopulateDiv(){     // decouncing means dont send request immediately let user finish
+            clearTimeout(timeout);
+
+            timeout =  setTimeout(function(){
+                populateDiv2();
+            }, 1000);
+    }
+    // cleaner way to do it using async await
+    async function populateDiv2(){
+         const a = document.getElementById("firstnumber").value;
+         const b = document.getElementById("secondnumber").value;
+
+         const response = await fetch("https://sum-server.100xdevs.com/sum?a=" +a +"&b="+b);
+         const ans = await response.text();
+
+         const element = document.getElementById("finalsum");
+         element.innerHTML = ans;
+    }
+</script>
+<body>
+    <input onInput="debouncePopulateDiv()" id = "firstnumber" type = "text" placeholder="First Number"> <br> <br>
+    <input  onInput="debouncePopulateDiv()" id = "secondnumber" type = "text" placeholder="Second Number"> <br> <br>
+    
+    <div id = "finalsum"></div>
+</body>
+</html>
